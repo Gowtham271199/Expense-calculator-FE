@@ -5,6 +5,7 @@ import '../App.css';
 const ExpenseList = () => {
   const [expenses, setExpenses] = useState([]);
   const [filter, setFilter] = useState({ date: '', category: '', amount: '' });
+  const [summary, setSummary] = useState({ total: 0, perCategory: {} });
 
   useEffect(() => {
     const fetchExpenses = async () => {
@@ -12,7 +13,17 @@ const ExpenseList = () => {
         const response = await axios.get('https://expense-calculator-be-2.onrender.com/api/expenses', {
           headers: { 'x-auth-token': localStorage.getItem('token') },
         });
-        setExpenses(response.data);
+        const expensesData = response.data;
+        setExpenses(expensesData);
+
+        // Calculate summary
+        const total = expensesData.reduce((acc, expense) => acc + expense.amount, 0);
+        const perCategory = expensesData.reduce((acc, expense) => {
+          acc[expense.category] = (acc[expense.category] || 0) + expense.amount;
+          return acc;
+        }, {});
+
+        setSummary({ total, perCategory });
       } catch (error) {
         console.error(error.response?.data || error.message);
       }
@@ -40,6 +51,15 @@ const ExpenseList = () => {
         <input type="text" name="category" placeholder="Filter by category" onChange={handleFilterChange} />
         <input type="number" name="amount" placeholder="Filter by amount" onChange={handleFilterChange} />
       </div>
+      <h3>Expense Summary</h3>
+      <p>Total Expenses: ${summary.total}</p>
+      <ul>
+        {Object.entries(summary.perCategory).map(([category, total]) => (
+          <li key={category}>
+            {category}: ${total}
+          </li>
+        ))}
+      </ul>
       <ul>
         {filteredExpenses.map((expense) => (
           <li key={expense._id}>
