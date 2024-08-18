@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../App.css';
-
+import { useNavigate } from 'react-router-dom';
 const AddExpense = () => {
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
-
+  const navigate = useNavigate();
+ 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
+    try{
     await axios.post(
       'https://expense-calculator-be-2.onrender.com/api/expenses',
       { amount, category, description },
       { headers: { 'x-auth-token': localStorage.getItem('token') } }
     );
-    window.location.href = '/expenses';
+    navigate('/expenses');
+  }
+    catch (error) {
+      console.error(error.response?.data || error.message); // Handle undefined error.response
+    }
   };
 
   return (
