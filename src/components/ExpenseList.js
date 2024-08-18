@@ -7,7 +7,7 @@ const ExpenseList = () => {
 
   useEffect(() => {
     const fetchExpenses = async () => {
-      const res = await axios.get('http://localhost:5000/api/expenses', {
+      const res = await axios.get('https://expense-calculator-be-2.onrender.com/api/expenses', {
         headers: { 'x-auth-token': localStorage.getItem('token') },
       });
       setExpenses(res.data);

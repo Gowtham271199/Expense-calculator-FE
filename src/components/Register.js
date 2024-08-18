@@ -10,7 +10,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', { name, email, password });
+      const response = await axios.post('https://expense-calculator-be-2.onrender.com/api/auth/register', { name, email, password });
       console.log(response.data);
       window.location.href = '/login';
     } catch (error) {
