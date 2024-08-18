@@ -10,7 +10,7 @@ const AddExpense = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios.post(
-      'https://expense-calculator-be-2.onrender.com/expenses',
+      'https://expense-calculator-be-2.onrender.com/api/expenses',
       { amount, category, description },
       { headers: { 'x-auth-token': localStorage.getItem('token') } }
     );
