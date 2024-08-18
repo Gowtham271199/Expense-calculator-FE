@@ -1,26 +1,9 @@
-/* App.css */
+/* Global Styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-}
-
-nav {
-  background-color: #4caf50;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-around;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  text-decoration: underline;
 }
 
 h1, h2 {
@@ -35,33 +18,6 @@ h1, h2 {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.container button {
-  margin: 0 10px; /* Add space between buttons */
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* Apply different colors to the buttons */
-.container button:first-of-type {
-  background-color: #007BFF; /* Blue color for Login button */
-  color: #fff;
-}
-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-button:hover {
-  background-color: #45a049;
-}
 
 input {
   width: calc(100% - 20px);
@@ -69,6 +25,31 @@ input {
   margin: 0.5rem 0;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: inline-block; /* Ensure buttons respect margin spacing */
+}
+
+/* Button Colors */
+button.login {
+  background-color: #007BFF; /* Blue color for Login button */
+  color: #fff;
+  margin-right: 1rem; /* Add space between Login and Register buttons */
+}
+
+button.register {
+  background-color: #28a745; /* Green color for Register button */
+  color: #fff;
+}
+
+button:hover {
+  opacity: 0.8; /* Slightly reduce opacity on hover for all buttons */
 }
 
 ul {
@@ -82,4 +63,52 @@ li {
   padding: 0.5rem;
   border-left: 5px solid #4caf50;
   border-radius: 4px;
+}
+
+/* Navigation Styles */
+nav {
+  background-color: #4caf50;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 0.5rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav a {
+    margin: 0.5rem 0;
+  }
+
+  button {
+    width: 100%; /* Full width for buttons on smaller screens */
+    padding: 0.75rem;
+    margin: 0.5rem 0; /* Add margin for spacing on smaller screens */
+  }
+
+  input {
+    width: 100%; /* Full width for input fields on smaller screens */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
 }
