@@ -1,9 +1,28 @@
-/* Global Styles */
+/* App.css */
+
+/* Global styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
+}
+
+nav {
+  background-color: #4caf50;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }
 
 h1, h2 {
@@ -19,37 +38,44 @@ h1, h2 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Button styles */
+button {
+  background-color: #4caf50; /* Default button color */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0.5rem; /* Add margin for spacing */
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button.primary {
+  background-color: #007bff; /* Blue color for primary buttons */
+}
+
+button.secondary {
+  background-color: #6c757d; /* Gray color for secondary buttons */
+}
+
+button.primary:hover {
+  background-color: #0056b3;
+}
+
+button.secondary:hover {
+  background-color: #5a6268;
+}
+
 input {
   width: calc(100% - 20px);
   padding: 0.5rem;
   margin: 0.5rem 0;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-button {
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  display: inline-block; /* Ensure buttons respect margin spacing */
-}
-
-/* Button Colors */
-button.login {
-  background-color: #007BFF; /* Blue color for Login button */
-  color: #fff;
-  margin-right: 1rem; /* Add space between Login and Register buttons */
-}
-
-button.register {
-  background-color: #28a745; /* Green color for Register button */
-  color: #fff;
-}
-
-button:hover {
-  opacity: 0.8; /* Slightly reduce opacity on hover for all buttons */
 }
 
 ul {
@@ -65,50 +91,7 @@ li {
   border-radius: 4px;
 }
 
-/* Navigation Styles */
-nav {
-  background-color: #4caf50;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0 0.5rem;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .container {
-    margin: 1rem;
-    padding: 1rem;
-  }
-
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav a {
-    margin: 0.5rem 0;
-  }
-
-  button {
-    width: 100%; /* Full width for buttons on smaller screens */
-    padding: 0.75rem;
-    margin: 0.5rem 0; /* Add margin for spacing on smaller screens */
-  }
-
-  input {
-    width: 100%; /* Full width for input fields on smaller screens */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-  }
+.error {
+  color: red;
+  margin: 1rem 0;
 }
